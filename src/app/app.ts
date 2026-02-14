@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import interact from 'interactjs';
@@ -9,11 +9,22 @@ import interact from 'interactjs';
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
-export class App implements AfterViewInit {
+
+export class App implements AfterViewInit, OnInit {
   @ViewChild('draggable') draggable!: ElementRef;
 
   private minWidth = 0;
   private minHeight = 0;
+  deferredPrompt: any = null;
+  canInstall = false;
+
+  ngOnInit() {
+    window.addEventListener('beforeinstallprompt', (event: any) => {
+      event.preventDefault();
+      this.deferredPrompt = event;
+      this.canInstall = true;
+    });
+  }
 
   ngAfterViewInit() {
     const element = this.draggable.nativeElement;
@@ -91,6 +102,16 @@ export class App implements AfterViewInit {
     window.print();
   }
 
+  installApp() {
+    if (!this.deferredPrompt) return;
+
+    this.deferredPrompt.prompt();
+
+    this.deferredPrompt.userChoice.then(() => {
+      this.deferredPrompt = null;
+      this.canInstall = false;
+    });
+  }
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (!file) return;
