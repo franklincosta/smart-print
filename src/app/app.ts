@@ -5,12 +5,15 @@ import interact from 'interactjs';
 
 @Component({
   selector: 'app-root',
-  imports:[CommonModule],
+  imports: [CommonModule],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
 export class App implements AfterViewInit {
   @ViewChild('draggable') draggable!: ElementRef;
+
+  private minWidth = 0;
+  private minHeight = 0;
 
   ngAfterViewInit() {
     const element = this.draggable.nativeElement;
@@ -22,13 +25,18 @@ export class App implements AfterViewInit {
 
         modifiers: [
           interact.modifiers.aspectRatio({ ratio: 'preserve' }),
-          interact.modifiers.restrictEdges({ outer: parent })
+          interact.modifiers.restrictEdges({ outer: parent }),
+          interact.modifiers.restrictSize({
+            min: {
+              width: this.minWidth,
+              height: this.minHeight
+            }
+          })
         ],
 
         listeners: {
 
           start: () => {
-            // 🔥 Esconde clones durante resize
             parent.querySelectorAll('.clone').forEach(e => {
               (e as HTMLElement).style.display = 'none';
             });
@@ -47,10 +55,17 @@ export class App implements AfterViewInit {
             let newWidth = Math.min(event.rect.width, maxWidth);
             let newHeight = newWidth / ratio;
 
+            // 🔥 BLOQUEIO DE TAMANHO MÍNIMO
+            if (newWidth < this.minWidth) {
+              newWidth = this.minWidth;
+              newHeight = newWidth / ratio;
+            }
+
             if (newHeight > maxHeight) {
               newHeight = maxHeight;
               newWidth = newHeight * ratio;
             }
+
             Object.assign(event.target.style, {
               width: `${newWidth}px`,
               height: `${newHeight}px`
@@ -94,6 +109,10 @@ export class App implements AfterViewInit {
         element.style.width = '250px';
         element.style.height = 'auto';
         element.style.transform = 'none';
+
+        this.minWidth = element.offsetWidth;
+        this.minHeight = element.offsetHeight;
+
         this.replicateImages();
       };
     };
