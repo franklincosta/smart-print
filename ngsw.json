@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1771107690613,
+  "timestamp": 1771108181132,
   "index": "https://franklincosta.github.io/smart-print/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "https://franklincosta.github.io/smart-print/favicon.ico",
         "https://franklincosta.github.io/smart-print/index.html",
-        "https://franklincosta.github.io/smart-print/main-75YPL23M.js",
+        "https://franklincosta.github.io/smart-print/main-BMPM23B6.js",
         "https://franklincosta.github.io/smart-print/manifest.webmanifest",
         "https://franklincosta.github.io/smart-print/styles-JG7EAGFK.css"
       ],
@@ -50,8 +50,8 @@
     "https://franklincosta.github.io/smart-print/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
     "https://franklincosta.github.io/smart-print/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
     "https://franklincosta.github.io/smart-print/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "https://franklincosta.github.io/smart-print/index.html": "ed84175353360986e29e9f55900f8e8ddee5da50",
-    "https://franklincosta.github.io/smart-print/main-75YPL23M.js": "ddd25ec337872260f59f5f0e180cc3da2e8b7f8d",
+    "https://franklincosta.github.io/smart-print/index.html": "569aece4eedb54d445a48027029a62f39591f3eb",
+    "https://franklincosta.github.io/smart-print/main-BMPM23B6.js": "2c56a7917965469d253c2bd54cd0fe06b6f08c2b",
     "https://franklincosta.github.io/smart-print/manifest.webmanifest": "81d4d88e3ba245e39d73d59f11da981a57bdf136",
     "https://franklincosta.github.io/smart-print/styles-JG7EAGFK.css": "24a47f30d7622679c7a3decd75d206e5c262921e"
   },
