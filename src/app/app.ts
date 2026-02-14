@@ -1,8 +1,11 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import interact from 'interactjs';
 
 @Component({
   selector: 'app-root',
+  imports:[CommonModule],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
