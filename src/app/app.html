@@ -4,7 +4,7 @@
     <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden #fileInput>
     <button class="btn btn-primary" (click)="fileInput.click()">Subir imagem</button>
     <button class="btn btn-secondary ms-2" (click)="imprimir()">Imprimir</button>
-    <button class="btn btn-success ms-2" (click)="installApp()">Instalar aplicativo</button>
+    <!--button *ngIf="!isInstalled" class="btn btn-success ms-2" (click)="installApp()">Instalar aplicativo</button-->
   </div>
 
   <!-- Folha A4 -->

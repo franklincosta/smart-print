@@ -17,13 +17,28 @@ export class App implements AfterViewInit, OnInit {
   private minHeight = 0;
   deferredPrompt: any = null;
   canInstall = false;
+  isInstalled = false;
 
   ngOnInit() {
+    // Detecta se está rodando como PWA instalada
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      this.isInstalled = true;
+    }
+
+    // iOS fallback
+    if ((window.navigator as any).standalone === true) {
+      this.isInstalled = true;
+    }
     window.addEventListener('beforeinstallprompt', (event: any) => {
       event.preventDefault();
       this.deferredPrompt = event;
-      this.canInstall = true;
     });
+
+    window.addEventListener('appinstalled', () => {
+      this.isInstalled = true;
+      this.canInstall = false;
+    });
+
   }
 
   ngAfterViewInit() {
