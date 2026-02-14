@@ -1,0 +1,16 @@
+<div class="app-container">
+  <!-- Botão (não imprime) -->
+  <div class="toolbar no-print">
+    <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden #fileInput>
+    <button class="btn btn-primary" (click)="fileInput.click()">Subir imagem</button>
+    <button class="btn btn-secondary ms-2" (click)="imprimir()">Imprimir</button>
+  </div>
+
+  <!-- Folha A4 -->
+  <div class="a4-page">
+    <!-- Área útil com margem -->
+    <div class="print-area">
+      <img #draggable class="draggable" src="">
+    </div>
+  </div>
+</div>
